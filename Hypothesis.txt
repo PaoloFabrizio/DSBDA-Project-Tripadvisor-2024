@@ -1,0 +1,11 @@
+Traveller choice per + anni sale il rating (o per esempio 3 su 5 anni)
+
+Ristoranti con più award hanno fasce di prezzo più elevate 
+
+Città più popolose hanno più opzione vegan, gluten…
+
+Più tipi di cucina si abbassa il food rating, più ore aperto più si abbassa il servizio
+
+Se hai più features hai atmosfera migliore come rating
+
+Predire il prezzo finale basato su altre 
