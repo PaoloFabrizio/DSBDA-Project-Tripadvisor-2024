@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import findspark
 findspark.init()
 import pyspark
@@ -14,17 +8,17 @@ import re
 def preprocess_csv(input_path, output_path):
     with open(input_path, 'r') as file:
         lines = file.readlines()
-
+   
     processed_lines = []
     for line in lines:
         # Usa una regex per trovare i campi tra parentesi quadre
-        matches = re.findall(r'\[.*?\]', line)
-        for match in matches:
-            # Sostituisci le virgole interne con un separatore temporaneo
-            temp = match.replace(',', ';')
-            line = line.replace(match, temp)
-        processed_lines.append(line)
+        line = re.sub(r'\[([^\]]+)\]', lambda m: m.group(0).replace(',', ';'), line)
+        # Usa una regex per trovare i campi tra virgolette doppie
+        line = re.sub(r'"([^"]*)"', lambda m: m.group(0).replace(',', ';'), line)
 
+
+        processed_lines.append(line)
+   
     with open(output_path, 'w') as file:
         file.writelines(processed_lines)
 
@@ -57,7 +51,7 @@ def drop_columns_and_save(df, columns_to_drop, num_partitions):
 
     # Save locally since Hadoop doesn't work
     df_repartitioned.write.csv("tripadvisor_filtered.csv", header=True, mode='overwrite')
-
+   
     '''
     hdfs_path = "hdfs://namenode_host:54310/projectDSBDA/dataset1.csv"
     df_filtered.write.csv(hdfs_path, header=True, mode='overwrite')
@@ -73,7 +67,7 @@ def print_shape(dataframe):
 #----------MAIN----------
 
 # Preprocess the CSV file
-preprocess_csv('tripadvisor_european_restaurants.csv', 'tripadvisor_processed.csv')
+preprocess_csv('tripadvisor.csv', 'tripadvisor_processed.csv')
 
 # Read the preprocessed CSV file
 df = spark.read.csv("tripadvisor_processed.csv", header=True, inferSchema=True, quote='"', escape='"', multiLine=True)
@@ -81,13 +75,12 @@ df = spark.read.csv("tripadvisor_processed.csv", header=True, inferSchema=True, 
 print_shape(df)
 
 # divide in partitions otherwise too heavy the csv to handle (more or less 200000 rows for partition)
-num_partitions = round(df.count() / 50000)
+num_partitions = round(df.count() / 200000)
 
 # Drop columns (give number)
-df_filtered = drop_columns_and_save(df, [0, 2, 7, 30, 31, 41], num_partitions)
+df_filtered = drop_columns_and_save(df, [], num_partitions)
 
 # Final shape is initial columns count - elements in the list + 1 (for the index column)
 print_shape(df_filtered)
 
 spark.stop()
-
