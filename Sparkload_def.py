@@ -75,10 +75,10 @@ df = spark.read.csv("tripadvisor_processed.csv", header=True, inferSchema=True, 
 print_shape(df)
 
 # divide in partitions otherwise too heavy the csv to handle (more or less 200000 rows for partition)
-num_partitions = round(df.count() / 200000)
+num_partitions = round(df.count() / 50000)
 
 # Drop columns (give number)
-df_filtered = drop_columns_and_save(df, [], num_partitions)
+df_filtered = drop_columns_and_save(df, [0, 2, 7, 30, 31, 41], num_partitions)
 
 # Final shape is initial columns count - elements in the list + 1 (for the index column)
 print_shape(df_filtered)
