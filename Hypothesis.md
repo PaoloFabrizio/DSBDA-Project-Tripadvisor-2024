@@ -2,28 +2,27 @@
 
 ## Hypotheses
 
-1. **Traveller's Choice Impact**:
-   - The rating increases with the number of years a restaurant has received the Traveller's Choice award (e.g., the rating improves if awarded for 3 out of the last 5 years).
 
-2. **Awards and Price Range**:
-   - Restaurants with more awards tend to have higher price ranges.
 
-3. **Population and Dietary Options**:
-   - Cities with larger populations offer more options for vegan, gluten-free, and other dietary preferences.
+   - Restaurants with more awards tend to have higher average rating.
 
-4. **Cuisine Variety and Ratings**:
-   - As the number of cuisine types offered increases, the food rating tends to decrease.
-   - The longer the restaurant's opening hours, the lower the service rating tends to be.
+   - Restaurants that offer more options for vegan, gluten-free, and other dietary preferences tend to have higher average rating.
 
-5. **Features and Atmosphere Rating**:
-   - Restaurants with more features (e.g., live music, outdoor seating) tend to have higher atmosphere ratings.
+   - Restaurants with higher average price tend to have higher average rating.
 
-## Prediction Task
+   - As the number of cuisine types offered increase, the average rating tends to decrease.
 
-6. **Predicting Price Range**:
-   - Use the hypotheses and relevant features to predict the final price range of restaurants.
+   - As the number of features offered increase, the average rating tends to increase.
+   
+   - The longer the restaurant's opening hours per week, the average rating tends to decrease.
+
+   - Restaurants in city with high population tends to have higher average rating than restaurants located in low population cities.
+
+
+
 
 ## Bonus Task
+   - Use the hypotheses and relevant features to predict the final price range of restaurants.
 
 7. **Bias Analysis**:
    - After preparing the dataset, select 200 rows and evaluate them.
