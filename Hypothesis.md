@@ -1,6 +1,6 @@
-# Hypotheses and Dataset Analysis
+# 2 Macro Hypotheses
 
-## Hypotheses
+##  First hypothesis: select most relevant features to predict avg_rating
 
 
 
@@ -14,7 +14,7 @@
 
 
 ## Metrics
-To prove/disprove our hypotheses, we can propose the following metrics:
+To prove/disprove the first hypothesis, we can propose the following metrics:
 
 - num_award. The number of awards. This metrics is linked to H1.
 - vegetarian_friendly, vegan_options, gluten_free. They are defined as binary value that tells if the restaurant offers the related option or not. This metrics is linked to H2.
@@ -22,7 +22,7 @@ To prove/disprove our hypotheses, we can propose the following metrics:
 - Population. The number of inhabitants for city in which the restaurant is located. This metrics is linked to H4.
 
 
-## Bonus Task
+## Second hypothesis: explain the bias of the predictions
    - Use the hypotheses and relevant features to predict the final price range of restaurants.
 
 7. **Bias Analysis**:
